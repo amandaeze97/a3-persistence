@@ -56,17 +56,17 @@ h1, h2, h3 {
 }
 
 #account-exists-btn, #new-account-btn, #cancel-btn, #return-to-login-btn {
-    border: 1px solid rgba(0,86,0,0.72);
-    color: rgba(0,86,0,0.72);
+    border: 1px solid #a0522d;
+    color: #a0522d;
 }
 
 #create-account-btn, #login-btn, #submit-btn, #update-btn, #new-order-btn {
-    background-color: rgba(0,86,0,0.72);
+    background-color: #a0522d;
 }
 
 .mdc-radio .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle {
-    border-color: #018786;
-    border-color: #870101;
+    border-color: #a0522d;
+    border-color: #a0522d;
 }
 
 /* Hero image styling adapted from: https://codepen.io/mrnathan8/pen/KwKdmO */
@@ -75,7 +75,7 @@ h1, h2, h3 {
     max-width: 1600px;
     text-align: center;
     margin: 0 auto;
-    background: #392f28;
+    background: #a0522d;
     position: relative;
     color: white;
 }
@@ -105,7 +105,6 @@ h1, h2, h3 {
 }
 .hero img{
     width: 100%;
-    padding-bottom: 10%;
 }
 /**.bar{
     width: 100%;
