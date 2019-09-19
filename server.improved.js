@@ -79,7 +79,7 @@ app.get('/orders', function (request, response) {
 app.post('/submit', function (request, response) {
     const order = request.body;
 
-    const price = calculatePrice(parseInt(order.typeOfGrain), parseInt(order.typeOgarlic));
+    const price = calculatePrice(parseInt(order.typeOfGrain), parseInt(order.typeOfProtein));
 
     const newOrder = {
         'fstname': order.fstname,
@@ -109,13 +109,14 @@ app.post('/submit', function (request, response) {
 app.post('/update', function (request, response) {
     const orderToUpdate = request.body;
 
-    const newPrice = calculatePrice(parseInt(orderToUpdate.amountOfPork), parseInt(orderToUpdate.garlic));
+    const newPrice = calculatePrice(parseInt(orderToUpdate.typeOfGrain), parseInt(orderToUpdate.typeOfProtein));
 
     const updatedOrder = {
-        'name': orderToUpdate.name,
-        'dream': orderToUpdate.dream,
-        'amountOfPork': parseInt(orderToUpdate.amountOfPork),
-        'garlic': parseInt(orderToUpdate.garlic),
+        'fstname': orderToUpdate.fstname,
+        'lstname': orderToUpdate.lstname,
+        'ordername': orderToUpdate.dream,
+        'typeOfGrain': parseInt(orderToUpdate.typeOfGrain),
+        'typeOfProtein': parseInt(orderToUpdate.typeOfProtein),
         'price': newPrice
     };
 
@@ -154,9 +155,9 @@ app.post('/delete', function (request, response) {
     response.end();
 });
 
-const calculatePrice = function (amountOfPork, ifGarlic) {
-  const baseRamenPrice = 7;
-  const price = (baseRamenPrice + (2*amountOfPork) + ifGarlic);
+const calculatePrice = function (typeOfGrain, typeOfProtein) {
+  const baseRiceBowlPrice = 9;
+  const price = (baseRiceBowlPrice + typeOfGrain + typeOfProtein);
   return price;
 };
 
