@@ -65,27 +65,42 @@
                 
               <!--    ORDER FORM    -->
                 <div id="order-form">
-                  <h3 class="mdc-typography--headline3">order your ramen</h3>
+                  <h3 class="mdc-typography--headline3">Create your own rice bowl!</h3>
+                  
                   <form action="">
                     <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
                       <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
-                        <input type="text" id="name" class="mdc-text-field__input" required>
+                        <input type="text" id="fstname" class="mdc-text-field__input" required>
                         <div class="mdc-notched-outline">
                           <div class="mdc-notched-outline__leading"></div>
                           <div class="mdc-notched-outline__notch">
-                            <label for="name" class="mdc-floating-label">Your name</label>
+                            <label for="fst-name" class="mdc-floating-label">Your First Name</label>
                           </div>
                           <div class="mdc-notched-outline__trailing"></div>
                         </div>
                       </div>
                     </div>
+                    
                     <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
-                      <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--outlined" style="width: 100%;">
-                        <textarea id="dream" class="mdc-text-field__input" required></textarea>
+                      <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
+                        <input type="text" id="lstname" class="mdc-text-field__input" required>
                         <div class="mdc-notched-outline">
                           <div class="mdc-notched-outline__leading"></div>
                           <div class="mdc-notched-outline__notch">
-                            <label for="dream" class="mdc-floating-label">Share your dream with us</label>
+                            <label for="lst-name" class="mdc-floating-label">Your Last Name</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
+                      <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--outlined" style="width: 100%;">
+                        <textarea id="ordername" class="mdc-text-field__input" required></textarea>
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="ordername" class="mdc-floating-label">Provide us with your order name.</label>
                           </div>
                           <div class="mdc-notched-outline__trailing"></div>
                         </div>
@@ -153,11 +168,23 @@
                   <form action="">
                     <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
                       <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
-                        <input type="text" id="updateName" class="mdc-text-field__input" required>
+                        <input type="text" id="updateFstName" class="mdc-text-field__input" required>
                         <div class="mdc-notched-outline">
                           <div class="mdc-notched-outline__leading"></div>
                           <div class="mdc-notched-outline__notch">
-                            <label for="updateName" class="mdc-floating-label">Your name</label>
+                            <label for="updateFstName" class="mdc-floating-label">Your First Name</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
+                      <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
+                        <input type="text" id="updateLstName" class="mdc-text-field__input" required>
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="updateLstName" class="mdc-floating-label">Your Last Name</label>
                           </div>
                           <div class="mdc-notched-outline__trailing"></div>
                         </div>
@@ -165,11 +192,11 @@
                     </div>
                     <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
                       <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--outlined" style="width: 100%;">
-                        <textarea id="updateDream" class="mdc-text-field__input" required></textarea>
+                        <textarea id="updateOrderName" class="mdc-text-field__input" required></textarea>
                         <div class="mdc-notched-outline">
                           <div class="mdc-notched-outline__leading"></div>
                           <div class="mdc-notched-outline__notch">
-                            <label for="updateDream" class="mdc-floating-label">Share your dream with us</label>
+                            <label for="updateOrderName" class="mdc-floating-label">Provide your order name</label>
                           </div>
                           <div class="mdc-notched-outline__trailing"></div>
                         </div>
@@ -258,12 +285,13 @@
     const addOrder = function( e ) {
       e.preventDefault();
       const newOrder = {
-        name: document.getElementById( 'name' ).value,
-        dream: document.getElementById( 'dream' ).value,
+        fstname: document.getElementById( 'fst-name' ).value,
+        lstname: document.getElementById( 'lst-name' ).value,
+        ordername: document.getElementById( 'ordername' ).value,
         amountOfPork: document.querySelector('input[name="pork"]:checked').value,
         garlic: document.querySelector('input[name="garlic"]:checked').value
       };
-      if (orderValidation(newOrder.name, newOrder.dream)) {
+      if (orderValidation(newOrder.fstname, newOrder.lstname, newOrder.ordername)) {
         const body = JSON.stringify( newOrder );
         fetch( '/submit', {
           method:'POST',
@@ -298,8 +326,9 @@
         const orders = data.data;
         let htmlDiv = document.getElementById('orders');
         htmlDiv.innerHTML = '<tr class="mdc-data-table__header-row">\n' +
-                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Name</th>\n' +
-                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Dream</th>\n' +
+                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Fist Name</th>\n' +
+                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Last Name</th>\n' +
+                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Order Name</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Pork</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Garlic</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Price</th>\n' +
@@ -312,8 +341,9 @@
           const stringOrder = JSON.stringify(orders[i]);
           const garlic = (order.garlic ? 'Yes' : 'No');
           let newRow = '<tr class="mdc-data-table__row">\n';
-          newRow += (`<td class="mdc-data-table__cell"> ${order.name} </td>\n`);
-          newRow += (`<td class="mdc-data-table__cell"> ${order.dream} </td>\n`);
+          newRow += (`<td class="mdc-data-table__cell"> ${order.fstname} </td>\n`);
+          newRow += (`<td class="mdc-data-table__cell"> ${order.lstname} </td>\n`);
+          newRow += (`<td class="mdc-data-table__cell"> ${order.ordername} </td>\n`);
           newRow += (`<td class="mdc-data-table__cell"> ${order.amountOfPork} pieces</td>\n`);
           newRow += (`<td class="mdc-data-table__cell"> ${garlic} </td>\n`);
           newRow += (`<td class="mdc-data-table__cell mdc-data-table__cell--numeric"> ${order.price} </td>\n`);
@@ -335,11 +365,11 @@
       const updatedOrder = {
         index: document.getElementById('update-btn').dataset.index,
         name: document.getElementById('updateName').value,
-        dream: document.getElementById('updateDream').value,
+        ordername: document.getElementById('updateOrderName').value,
         amountOfPork: document.querySelector('input[name="updatePork"]:checked').value,
         garlic: document.querySelector('input[name="updateGarlic"]:checked').value
       };
-      if (orderValidation(updatedOrder.name, updatedOrder.dream)) {
+      if (orderValidation(updatedOrder.name, updatedOrder.ordername)) {
         const body = JSON.stringify(updatedOrder);
         fetch('/update', {
           method: 'POST',
@@ -353,16 +383,16 @@
     };
     const resetOrderForm = () => {
       document.getElementById( 'name' ).value = '';
-      document.getElementById( 'dream' ).value = '';
+      document.getElementById( 'ordername' ).value = '';
       document.getElementById('3pork').checked = true;
       document.getElementById('allGarlic').checked = true;
     };
-    const orderValidation = function (name, dream) {
+    const orderValidation = function (name, ordername) {
       if (name === '') {
         document.getElementById('form-error').style.display = "block";
         document.getElementById('form-error').focus();
         return false;
-      } else if (dream === '') {
+      } else if (ordername === '') {
         document.getElementById('form-error').style.display = "block";
         document.getElementById('form-error').focus();
         return false;
@@ -412,7 +442,7 @@
       // load values
       document.getElementById('update-btn').dataset.index = index;
       document.getElementById('updateName').value=orderToUpdate.name;
-      document.getElementById('updateDream').value=orderToUpdate.dream;
+      document.getElementById('updateOrderName').value=orderToUpdate.ordername;
       orderToUpdate.amountOfPork === 3 ? document.getElementById('update3pork').checked = true : document.getElementById('update5pork').checked = true;
       orderToUpdate.garlic ? document.getElementById('updateAllGarlic').checked = true : document.getElementById('updateSansGarlic').checked = true;
       return false;
