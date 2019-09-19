@@ -332,13 +332,13 @@
                       </div>
                       <label for="update_fiery_chickpeas">Fiery Chickpeas</label>
                       <div class="mdc-radio" role="radiogroup" aria-label="type-of-protein">
-                        <input class="mdc-radio__native-control" type="radio" role="radio" checked id="update_salt_pepper_chk" name="updateProtein" value="1">
+                        <input class="mdc-radio__native-control" type="radio" role="radio" checked id="update_roasted_paprika_tofu" name="updateProtein" value="1">
                         <div class="mdc-radio__background">
                           <div class="mdc-radio__outer-circle"></div>
                           <div class="mdc-radio__inner-circle"></div>
                         </div>
                       </div>
-                      <label for="update_salt_pepper_chk">Chinese Salt + Pepper Chicken</label>
+                      <label for="update_roasted_paprika_tofu">Roasted Paprika Tofu</label>
                     
                     </div>
 
@@ -387,8 +387,8 @@
         fstname: document.getElementById( 'fst-name' ).value,
         lstname: document.getElementById( 'lst-name' ).value,
         ordername: document.getElementById( 'ordername' ).value,
-        amountOfPork: document.querySelector('input[name="pork"]:checked').value,
-        garlic: document.querySelector('input[name="garlic"]:checked').value
+        typeOfGrain: document.querySelector('input[name="grain"]:checked').value,
+        typeOfProtein: document.querySelector('input[name="protein"]:checked').value
       };
       if (orderValidation(newOrder.fstname, newOrder.lstname, newOrder.ordername)) {
         const body = JSON.stringify( newOrder );
@@ -428,8 +428,8 @@
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Fist Name</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Last Name</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Order Name</th>\n' +
-                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Pork</th>\n' +
-                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Garlic</th>\n' +
+                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Grain</th>\n' +
+                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Protein</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Price</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col"></th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col"></th>\n' +
@@ -443,8 +443,8 @@
           newRow += (`<td class="mdc-data-table__cell"> ${order.fstname} </td>\n`);
           newRow += (`<td class="mdc-data-table__cell"> ${order.lstname} </td>\n`);
           newRow += (`<td class="mdc-data-table__cell"> ${order.ordername} </td>\n`);
-          newRow += (`<td class="mdc-data-table__cell"> ${order.amountOfPork} pieces</td>\n`);
-          newRow += (`<td class="mdc-data-table__cell"> ${garlic} </td>\n`);
+          newRow += (`<td class="mdc-data-table__cell"> ${order.typeOfGrain} pieces</td>\n`);
+          newRow += (`<td class="mdc-data-table__cell"> ${order.typeOfProtein} pieces</td>\n`);
           newRow += (`<td class="mdc-data-table__cell mdc-data-table__cell--numeric"> ${order.price} </td>\n`);
           newRow += (`<td class="mdc-data-table__cell"> <button id="update-button-${i}" class="mdc-button mdc-button--dense mdc-button--outlined" onclick="viewUpdateForm(${i})" data-string=`
                   + encodeURIComponent(stringOrder) +
@@ -466,8 +466,8 @@
         fstname: document.getElementById('updateFstName').value,
         lstname: document.getElementById('updateLstName').value,
         ordername: document.getElementById('updateOrderName').value,
-        amountOfPork: document.querySelector('input[name="updatePork"]:checked').value,
-        garlic: document.querySelector('input[name="updateGarlic"]:checked').value
+        typeOfGrain: document.querySelector('input[name="updateGrain"]:checked').value,
+        typeOfProtein: document.querySelector('input[name="updateProtein"]:checked').value
       };
       if (orderValidation(updatedOrder.fstname, updatedOrder.lstname, updatedOrder.ordername)) {
         const body = JSON.stringify(updatedOrder);
@@ -485,8 +485,8 @@
       document.getElementById( 'fstname' ).value = '';
       document.getElementById( 'lstname' ).value = '';
       document.getElementById( 'ordername' ).value = '';
-      document.getElementById('3pork').checked = true;
-      document.getElementById('allGarlic').checked = true;
+      document.getElementById('brown_rice').checked = true;
+      document.getElementById('salt_pepper_chk').checked = true;
     };
     const orderValidation = function (fstname, lstname, ordername) {
       if (fstname || lstname === '') {
@@ -545,8 +545,8 @@
       document.getElementById('updateFstName').value=orderToUpdate.fstname;
       document.getElementById('updateLstName').value=orderToUpdate.lstname;
       document.getElementById('updateOrderName').value=orderToUpdate.ordername;
-      orderToUpdate.amountOfPork === 3 ? document.getElementById('update3pork').checked = true : document.getElementById('update5pork').checked = true;
-      orderToUpdate.garlic ? document.getElementById('updateAllGarlic').checked = true : document.getElementById('updateSansGarlic').checked = true;
+      orderToUpdate.typeOfGrain === 3 ? document.getElementById('update_brown_rice').checked = true : document.getElementById('update_white_rice').checked = true;
+      orderToUpdate.typeOfProtein ? document.getElementById('update_salt_pepper_chk').checked = true : document.getElementById('update_fiery_chickpeas').checked = true;
       return false;
     };
     window.onload = function() {

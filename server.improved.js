@@ -79,13 +79,14 @@ app.get('/orders', function (request, response) {
 app.post('/submit', function (request, response) {
     const order = request.body;
 
-    const price = calculatePrice(parseInt(order.amountOfPork), parseInt(order.garlic));
+    const price = calculatePrice(parseInt(order.typeOfGrain), parseInt(order.typeOgarlic));
 
     const newOrder = {
-        'name': order.name,
-        'dream': order.dream,
-        'amountOfPork': parseInt(order.amountOfPork),
-        'garlic': parseInt(order.garlic),
+        'fstname': order.fstname,
+        'lstname': order.lstname,
+        'ordername': order.ordername,
+        'amountOfGrain': parseInt(order.typeOfGrain),
+        'typeOfProtein': parseInt(order.typeOfProtein),
         'price': price
     };
 
