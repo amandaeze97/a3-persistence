@@ -14,7 +14,7 @@ once the customer logs onto the application, they feel even more hungry than the
 that is clear and rich with color of some of the available rice bowl options.
 
 Login Credentials:
-Username: Amanda
+Username: Amanda,
 Password: 1234
 
 ### Challenges
