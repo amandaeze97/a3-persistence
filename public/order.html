@@ -10,7 +10,7 @@
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
   </head>
   
-  <body class="mdc-typography mdc-layout-grid">
+  <body id="body" class="mdc-typography mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7-desktop mdc-layout-grid__cell--span-12-tablet mdc-layout-grid__cell--span-12-phone">
         <nav class="mdc-tab-bar" role="tablist">
@@ -361,7 +361,7 @@
               <div class="mdc-card" id="login-error">
                 Please login to place an order.
                 <div class="mdc-card__actions" style="display: flex; justify-content: center; margin-top: 10px;">
-                  <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--outlined">
+                  <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--outlined"  id="return-to-login-btn">
                     <span class="mdc-button__label" id="login-btn">Login</span>
                   </button>
                 </div>

@@ -114,7 +114,7 @@ app.post('/update', function (request, response) {
     const updatedOrder = {
         'fstname': orderToUpdate.fstname,
         'lstname': orderToUpdate.lstname,
-        'ordername': orderToUpdate.dream,
+        'ordername': orderToUpdate.ordername,
         'typeOfGrain': parseInt(orderToUpdate.typeOfGrain),
         'typeOfProtein': parseInt(orderToUpdate.typeOfProtein),
         'price': newPrice
