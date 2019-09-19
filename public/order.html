@@ -108,27 +108,36 @@
                     </div>
                     <div class="mdc-form-field">
                       <label>Grain</label>
-                      <div class="mdc-radio" role="radiogroup" aria-label="pork-pieces">
-                        <input class="mdc-radio__native-control" type="radio" role="radio" checked id="3pork" name="pork" value="3">
+                      <div class="mdc-radio" role="radiogroup" aria-label="type-of-grain">
+                        <input class="mdc-radio__native-control" type="radio" role="radio" checked id="brown_rice" name="grain" value="0">
                         <div class="mdc-radio__background">
                           <div class="mdc-radio__outer-circle"></div>
                           <div class="mdc-radio__inner-circle"></div>
                         </div>
                       </div>
-                      <label for="3pork">3 pieces</label>
+                      <label for="brown_rice">Brown Rice</label>
                       <div class="mdc-radio">
-                        <input class="mdc-radio__native-control" type="radio" role="radio" id="5pork" name="pork" value="5">
+                        <input class="mdc-radio__native-control" type="radio" role="radio" id="white_rice" name="grain" value="0">
                         <div class="mdc-radio__background">
                           <div class="mdc-radio__outer-circle"></div>
                           <div class="mdc-radio__inner-circle"></div>
                         </div>
                       </div>
-                      <label for="5pork">5 pieces</label>
+                      <label for="white_rice">White Rice</label>
+                      <div class="mdc-radio">
+                        <input class="mdc-radio__native-control" type="radio" role="radio" id="quinoa_brown_rice" name="grain" value="1">
+                        <div class="mdc-radio__background">
+                          <div class="mdc-radio__outer-circle"></div>
+                          <div class="mdc-radio__inner-circle"></div>
+                        </div>
+                      </div>
+                      <label for="quinoa_brown_rice">Quinoa & Brown Rice</label>
                     </div>
+                    
                     <div class="mdc-form-field">
                       <label>Protein</label>
-                      <div class="mdc-radio" role="radiogroup" aria-label="garlic-level">
-                        <input class="mdc-radio__native-control" type="radio" role="radio" id="sansGarlic" name="garlic" value="0">
+                      <div class="mdc-radio" role="radiogroup" aria-label="type-of-protein">
+                        <input class="mdc-radio__native-control" type="radio" role="radio" id="salt_pepper_chk" name="protein" value="1">
                         <div class="mdc-radio__background">
                           <div class="mdc-radio__outer-circle"></div>
                           <div class="mdc-radio__inner-circle"></div>
@@ -143,6 +152,29 @@
                         </div>
                       </div>
                       <label for="allGarlic">Yes, please!</label>
+                      
+                      
+                      
+                      <input type="radio" role="radio" checked id="salt_pepper_chk" name="protein" value="1">
+              <label for="salt_pepper_chk">Chinese Salt + Pepper Chicken</label><br>
+              
+              <input type="radio" role="radio" id="tamari_chk" name="protein" value="2">
+              <label for="tamari_chk">Tamari Chicken</label><br>
+              
+              <input type="radio" role="radio" id="char_siu_bbq_chk" name="protein" value="1">
+              <label for="char_siu_bbq_chk">Char Siu BBQ Chicken</label><br>
+              
+              <input type="radio" role="radio" id="gochujang_chk" name="protein" value="1">
+              <label for="gochujang_chk">Gochujang Chicken</label><br>
+              
+              <input type="radio" role="radio" id="miso_braised_pulled_pork" name="protein" value="1">
+              <label for="miso_braised_pulled_pork">Miso Braised Pulled Pork</label><br>
+              
+              <input type="radio" role="radio" id="fiery_chickpeas" name="protein" value="1">
+              <label for="fiery_chickpeas">Fiery Chickpeas</label><br>
+              
+              <input type="radio" role="radio" id="roasted_paprika_tofu" name="protein" value="1">
+              <label for="roasted_paprika_tofu">Roasted Paprika Tofu</label><br>
                     </div>
                     <div id="submit-btn">
                       <button class="submit-btn mdc-button mdc-button--raised" style="margin-top: 20px;">Place Order</button>
