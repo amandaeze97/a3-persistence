@@ -26,7 +26,7 @@
             <div style="display: flex; flex-direction: column; align-items: center;">
               <!--        LOGIN FORM        -->
               <div id="login-form">
-                <h3 class="mdc-typography--headline3" id="form-title">login</h3>
+                <h3 class="mdc-typography--headline3" id="form-title">Login</h3>
                 <form action="" style="display: flex; flex-direction: column; align-items: center;">
                   <div class="mdc-form-field">
                     <div class="mdc-text-field mdc-text-field--outlined" style="margin-bottom:20px;">
@@ -135,7 +135,7 @@
     };
     const viewCreateForm = function() {
       resetLoginForm();
-      document.getElementById('form-title').innerText = "sign-up";
+      document.getElementById('form-title').innerText = "Sign up";
       document.getElementById('help-text').innerText = "Have an account?";
       document.getElementById('new-account-btn').style.display = "none";
       document.getElementById('account-exists-btn').style.display = "inline-flex";
@@ -147,7 +147,7 @@
     };
     const viewLoginForm = function() {
       document.getElementById('form-title').innerText = "login";
-      document.getElementById('help-text').innerText = "New here?";
+      document.getElementById('help-text').innerText = "First time here?";
       document.getElementById('account-exists-btn').style.display = "none";
       document.getElementById('new-account-btn').style.display = "inline-flex";
       document.getElementById('create-account-btn').style.display = "none";

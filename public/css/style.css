@@ -45,10 +45,11 @@ h1, h2, h3 {
 }
 
 #login-form h3, #order-table h3, #order-confirmation h3, #order-form h3, #update-order-form h3 {
-    font-family: 'Oregano', cursive;
-    font-size: 8vw;
-    margin-top: 20px;
-    margin-bottom: 25px;
+    font-family: 'Lobster Two', cursive;
+    font-size: 5vw;
+    margin-top: 60px;
+    margin-bottom: 55px;
+    line-height: 1.3;
 }
 
 #account-exists-btn, #create-account-btn {
@@ -138,9 +139,10 @@ h1, h2, h3 {
     }
 
     #login-form h3, #order-table h3, #order-confirmation h3, #order-form h3, #update-order-form h3 {
-        font-size: 10vw;
-        margin-bottom: 10px;
-        margin-top: 0px;
+        font-size: 8vw;
+        margin-bottom: 55px;
+        margin-top: 60px;
+        line-height: 1.3;
     }
 
     .mdc-data-table {
