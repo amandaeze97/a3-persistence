@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Yume Wo Katare</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two|Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  </head>
+  
+  <body class="mdc-typography mdc-layout-grid">    
+    <header class="hero" style="display: flex; justify-content: center;">
+      <img src="https://cdn.glitch.com/43008e21-b00d-4a43-831e-9d38ee279bc0%2Frice_bowl_header.jpg?v=1568002875243" id="rice-bowl" alt="4 bowls of different toppings">
+      <h1>Bon Me</h1>
+      <h2>Create your own rice bowl!</h2>
+      <div class="bar"></div>
+    </header>
+    
+    <main class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-12">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop"></div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-12-phone mdc-layout-grid__cell--span-12-tablet" style="text-align: center;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              
+              <!--        LOGIN FORM        -->
+              <div id="login-form">
+                <h3 class="mdc-typography--headline3">login</h3>
+                <form action="" style="display: flex; flex-direction: column;">
+                  <div class="mdc-form-field">
+                    <div class="mdc-text-field mdc-text-field--outlined" style="margin-bottom:20px;">
+                      <input type="text" class="mdc-text-field__input" id="username" autocomplete="off" required>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="username" class="mdc-floating-label username-label">Username</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-text-field mdc-text-field--outlined">
+                      <input type="password" class="mdc-text-field__input" id="password" autocomplete="off" required>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="password" class="mdc-floating-label password-label">Password</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <button id="login-btn" class="login-btn mdc-button mdc-button--raised" style="margin-top: 20px;">log in</button>
+                  </div>
+                </form>
+              </div>
+              
+              <!--        THROW ERROR        -->
+              <div class="mdc-card" id="username-error">
+                Please enter a correct username or password.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+  <script>
+    const button = document.querySelector('.login-btn');
+    mdc.ripple.MDCRipple.attachTo(button);
+    const textFields = document.querySelectorAll('.mdc-text-field');
+    for (const textField of textFields) {
+      mdc.textField.MDCTextField.attachTo(textField);
+    }
+    const login = async function( e ) {
+      e.preventDefault();
+      const userData = {
+        username: document.getElementById( 'username' ).value,
+        password: document.getElementById( 'password' ).value
+      };
+      try {
+        const resp = await fetch( '/login', {
+          method:'POST',
+          body: JSON.stringify(userData),
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include'
+        });
+        const data = await resp.json();
+        if (data.status === true) {
+          window.location="/orderPlatform.html";
+        }
+      } catch {
+        document.getElementById('username-error').style.display = "block";
+      }
+      return false;
+    };
+    const resetLoginForm = () => {
+      document.getElementById( 'username' ).value = '';
+      document.getElementById( 'password' ).value = '';
+    };
+    window.onload = function() {
+      resetLoginForm();
+      const loginButton = document.getElementById('login-btn');
+      loginButton.onclick = login;
+    };
+  </script>
+</html>

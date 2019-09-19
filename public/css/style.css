@@ -1,4 +1,131 @@
-body {
+h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#form-error, #login-error, #username-error {
+    display: none;
+    padding: 25px 20px;
+    margin-top: 20px;
+    width: 80%;
+}
+
+#order-form {
+    display: flex;
+    width: 80%;
+    text-align: center;
+    float: left;
+    flex-direction: column;
+    align-items: center;
+}
+
+#order-confirmation {
+    display: none;
+    flex-direction: column;
+    height: 50%;
+    align-items: center;
+}
+
+#order-table {
+    display: none;
+    width: 90%;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#update-order-form {
+    display: none;
+    width: 80%;
+}
+
+#login-form h3, #order-table h3, #order-confirmation h3, #order-form h3, #update-order-form h3 {
+    font-family: 'Oregano', cursive;
+    font-size: 8vw;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+/* Hero image styling adapted from: https://codepen.io/mrnathan8/pen/KwKdmO */
+.hero{
+    width: 100%;
+    max-width: 1600px;
+    text-align: center;
+    margin: 0 auto;
+    background: #392f28;
+    position: relative;
+    color: white;
+}
+
+.hero h1{
+    font-family: 'Oregano', cursive;
+    font-size: 8vw;
+    margin: auto;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.hero p{
+    font-family: 'Raleway', sans-serif;
+    font-size: 3vw;
+    margin: auto;
+    position: absolute;
+    top: 55%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.hero img{
+    width: 100%;
+}
+.bar{
+    width: 100%;
+    height: 60%;
+    background: -moz-linear-gradient(289deg, #c60a09 0%, #f23332 36%, #c60a09 100%);
+    background: -webkit-linear-gradient(289deg, #c60a09 0%, #f23332 36%, #c60a09 100%);
+    background: -ms-linear-gradient(289deg, #c60a09 0%, #f23332 36%, #c60a09 100%);
+    background: linear-gradient(161deg, #c60a09 0%, #f23332 36%, #c60a09 100%);
+    opacity: 0.3;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 70px;
+}
+
+@media all and (max-width: 768px) {
+    .hero{
+        height: auto;
+    }
+    .bar{
+        height: 20vw;
+        top: 6vw;
+    }
+    .hero h1{
+        font-size: 7.2vw;
+        top: 10vw;
+    }
+    .hero p{
+        font-size: 3vw;
+        top: 18vw;
+    }
+
+    #login-form h3, #order-table h3, #order-confirmation h3, #order-form h3, #update-order-form h3 {
+        font-size: 10vw;
+        margin-bottom: 10px;
+        margin-top: 0px;
+    }
+
+    .mdc-data-table {
+        width: 100%
+    }
+}
+
+
+/**body {
   margin: 0px;
   display: flex;
   flex-direction: row;
@@ -252,4 +379,4 @@ table button {
     color: white;
     border: 1px solid black;
     align-self: center;
-}
+}**/
