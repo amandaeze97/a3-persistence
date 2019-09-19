@@ -6,6 +6,7 @@ const express = require( 'express' ),
     Local     = require( 'passport-local' ).Strategy,
     serveStatic = require('serve-static'),
     compression = require('compression'),
+    helmet = require('helmet'),
     port = 3000;
 
 const low = require('lowdb');
@@ -21,6 +22,7 @@ app.use( compression() );
 app.use( session({ secret:'cats cats cats', resave: false, saveUninitialized: false }) );
 app.use( passport.initialize() );
 app.use( passport.session() );
+app.use( helmet() );
 
 //////////// PASSPORT CONFIGURATION ////////////
 passport.use(new Local (
@@ -76,6 +78,21 @@ app.get('/orders', function (request, response) {
     response.send(JSON.stringify({data: orders[0]}));
 });
 
+	app.post('/createAccount', function (request, response) {		
+   const users = db.get('users')		
+       .filter({username: request.body.username})		
+       .map('username')		
+       .value();		
+   if ((users.length > 0) || (request.body.username === "")) {		
+       response.send(JSON.stringify({status: false}));		
+   } else {		
+       db.get('users')		
+           .push(request.body)		
+           .write();		
+       response.send(JSON.stringify({status: true}));		
+   }		
+});
+
 app.post('/submit', function (request, response) {
     const order = request.body;
 
@@ -114,7 +131,7 @@ app.post('/update', function (request, response) {
     const updatedOrder = {
         'fstname': orderToUpdate.fstname,
         'lstname': orderToUpdate.lstname,
-        'ordername': orderToUpdate.ordername,
+        'ordername': orderToUpdate.o,
         'typeOfGrain': parseInt(orderToUpdate.typeOfGrain),
         'typeOfProtein': parseInt(orderToUpdate.typeOfProtein),
         'price': newPrice
@@ -157,7 +174,7 @@ app.post('/delete', function (request, response) {
 
 const calculatePrice = function (typeOfGrain, typeOfProtein) {
   const baseRiceBowlPrice = 9;
-  const price = (baseRiceBowlPrice + typeOfGrain + typeOfProtein);
+  const price = baseRiceBowlPrice + typeOfGrain + typeOfProtein;
   return price;
 };
 

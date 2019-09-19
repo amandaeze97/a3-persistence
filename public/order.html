@@ -362,7 +362,7 @@
                 Please login to place an order.
                 <div class="mdc-card__actions" style="display: flex; justify-content: center; margin-top: 10px;">
                   <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--outlined"  id="return-to-login-btn">
-                    <span class="mdc-button__label" id="login-btn">Login</span>
+                    <span class="mdc-button__label">Login</span>
                   </button>
                 </div>
               </div>
@@ -428,7 +428,7 @@
         const orders = data.data;
         let htmlDiv = document.getElementById('orders');
         htmlDiv.innerHTML = '<tr class="mdc-data-table__header-row">\n' +
-                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Fist Name</th>\n' +
+                '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">First Name</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Last Name</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Order Name</th>\n' +
                 '              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Grain</th>\n' +
@@ -565,7 +565,7 @@
       updateButton.onclick = updateOrder;
       const newOrderButton = document.getElementById( 'new-order-btn' );
       newOrderButton.onclick = viewOrderForm;
-      const loginButton = document.getElementById('login-btn');
+      const loginButton = document.getElementById('return-to-login-btn');
       loginButton.onclick = viewLoginForm;
       const logoutButton = document.getElementById('logout-link');
       logoutButton.onclick = logout;
