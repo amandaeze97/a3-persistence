@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Bon Me</title>
+    <title>Restaurant</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/css/style.css" rel="stylesheet" type="text/css">
@@ -107,7 +107,7 @@
                       </div>
                     </div>
                     <div class="mdc-form-field">
-                      <label>How much pork?</label>
+                      <label>Grain</label>
                       <div class="mdc-radio" role="radiogroup" aria-label="pork-pieces">
                         <input class="mdc-radio__native-control" type="radio" role="radio" checked id="3pork" name="pork" value="3">
                         <div class="mdc-radio__background">
@@ -126,7 +126,7 @@
                       <label for="5pork">5 pieces</label>
                     </div>
                     <div class="mdc-form-field">
-                      <label>Any garlic?</label>
+                      <label>Protein</label>
                       <div class="mdc-radio" role="radiogroup" aria-label="garlic-level">
                         <input class="mdc-radio__native-control" type="radio" role="radio" id="sansGarlic" name="garlic" value="0">
                         <div class="mdc-radio__background">
@@ -203,7 +203,7 @@
                       </div>
                     </div>
                     <div class="mdc-form-field">
-                      <label>How much pork?</label>
+                      <label>Grain</label>
                       <div class="mdc-radio" role="radiogroup" aria-label="pieces-of-pork">
                         <input class="mdc-radio__native-control" type="radio" checked id="update3pork" name="updatePork" value="3">
                         <div class="mdc-radio__background">
@@ -224,7 +224,7 @@
                     </div>
 
                     <div class="mdc-form-field">
-                      <label>Any garlic?</label>
+                      <label>Protein</label>
                       <div class="mdc-radio" role="radiogroup" aria-label="garlic-level">
                         <input class="mdc-radio__native-control" type="radio" role="radio" checked id="updateSansGarlic" name="updateGarlic" value="0">
                         <div class="mdc-radio__background">
@@ -364,12 +364,13 @@
       e.preventDefault();
       const updatedOrder = {
         index: document.getElementById('update-btn').dataset.index,
-        name: document.getElementById('updateName').value,
+        fstname: document.getElementById('updateFstName').value,
+        lstname: document.getElementById('updateLstName').value,
         ordername: document.getElementById('updateOrderName').value,
         amountOfPork: document.querySelector('input[name="updatePork"]:checked').value,
         garlic: document.querySelector('input[name="updateGarlic"]:checked').value
       };
-      if (orderValidation(updatedOrder.name, updatedOrder.ordername)) {
+      if (orderValidation(updatedOrder.fstname, updatedOrder.lstname, updatedOrder.ordername)) {
         const body = JSON.stringify(updatedOrder);
         fetch('/update', {
           method: 'POST',
@@ -382,13 +383,14 @@
       return false;
     };
     const resetOrderForm = () => {
-      document.getElementById( 'name' ).value = '';
+      document.getElementById( 'fstname' ).value = '';
+      document.getElementById( 'lstname' ).value = '';
       document.getElementById( 'ordername' ).value = '';
       document.getElementById('3pork').checked = true;
       document.getElementById('allGarlic').checked = true;
     };
-    const orderValidation = function (name, ordername) {
-      if (name === '') {
+    const orderValidation = function (fstname, lstname, ordername) {
+      if (fstname || lstname === '') {
         document.getElementById('form-error').style.display = "block";
         document.getElementById('form-error').focus();
         return false;
@@ -441,7 +443,8 @@
       document.getElementById('update-order-form').style.display="block";
       // load values
       document.getElementById('update-btn').dataset.index = index;
-      document.getElementById('updateName').value=orderToUpdate.name;
+      document.getElementById('updateFstName').value=orderToUpdate.fstname;
+      document.getElementById('updateLstName').value=orderToUpdate.lstname;
       document.getElementById('updateOrderName').value=orderToUpdate.ordername;
       orderToUpdate.amountOfPork === 3 ? document.getElementById('update3pork').checked = true : document.getElementById('update5pork').checked = true;
       orderToUpdate.garlic ? document.getElementById('updateAllGarlic').checked = true : document.getElementById('updateSansGarlic').checked = true;
