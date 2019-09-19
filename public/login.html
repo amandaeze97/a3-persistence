@@ -24,20 +24,19 @@
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop"></div>
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-12-phone mdc-layout-grid__cell--span-12-tablet" style="text-align: center;">
             <div style="display: flex; flex-direction: column; align-items: center;">
-              
               <!--        LOGIN FORM        -->
               <div id="login-form">
-                <h3 class="mdc-typography--headline3">login</h3>
-                <form action="" style="display: flex; flex-direction: column;">
+                <h3 class="mdc-typography--headline3" id="form-title">login</h3>
+                <form action="" style="display: flex; flex-direction: column; align-items: center;">
                   <div class="mdc-form-field">
                     <div class="mdc-text-field mdc-text-field--outlined" style="margin-bottom:20px;">
                       <input type="text" class="mdc-text-field__input" id="username" autocomplete="off" required>
                       <div class="mdc-notched-outline">
-                        <div class="mdc-notched-outline__leading"></div>
-                        <div class="mdc-notched-outline__notch">
-                          <label for="username" class="mdc-floating-label username-label">Username</label>
+                        <div class="mdc-notched-outline__leading" style="border-color: rgba(0,86,0,0.72);"></div>
+                        <div class="mdc-notched-outline__notch" style="border-color: rgba(0,86,0,0.72);">
+                          <label for="username" class="mdc-floating-label username-label" style="color: rgba(0,86,0,0.72);">Username</label>
                         </div>
-                        <div class="mdc-notched-outline__trailing"></div>
+                        <div class="mdc-notched-outline__trailing" style="border-color: rgba(0,86,0,0.72);"></div>
                       </div>
                     </div>
                   </div>
@@ -45,21 +44,21 @@
                     <div class="mdc-text-field mdc-text-field--outlined">
                       <input type="password" class="mdc-text-field__input" id="password" autocomplete="off" required>
                       <div class="mdc-notched-outline">
-                        <div class="mdc-notched-outline__leading"></div>
-                        <div class="mdc-notched-outline__notch">
-                          <label for="password" class="mdc-floating-label password-label">Password</label>
+                        <div class="mdc-notched-outline__leading" style="border-color: rgba(0,86,0,0.72);"></div>
+                        <div class="mdc-notched-outline__notch" style="border-color: rgba(0,86,0,0.72);">
+                          <label for="password" class="mdc-floating-label password-label" style="color: rgba(0,86,0,0.72);">Password</label>
                         </div>
-                        <div class="mdc-notched-outline__trailing"></div>
+                        <div class="mdc-notched-outline__trailing" style="border-color: rgba(0,86,0,0.72);"></div>
                       </div>
                     </div>
                   </div>
                   <div>
                     <button id="login-btn" class="login-btn mdc-button mdc-button--raised" style="margin-top: 20px;">log in</button>
+                    <button id="create-account-btn" class="create-account-btn mdc-button mdc-button--raised" style="margin-top: 20px;">create account</button>
                   </div>
                 </form>
               </div>
-              
-              <!--        THROW ERROR        -->
+              <!--        ERRORS        -->
               <div class="mdc-card" id="username-error">
                 Please enter a correct username or password.
               </div>
@@ -70,7 +69,7 @@
                 Account created! Please log in.
               </div>
               <div style="display: flex; flex-direction: column; margin-top: 20px;">
-                <p id="help-text">First time here?</p>
+                <p id="help-text">New here?</p>
                 <button id="new-account-btn" class="new-account-btn mdc-button mdc-button--outlined">Create an account</button>
                 <button id="account-exists-btn" class="account-exists-btn mdc-button mdc-button--outlined">Log in</button>
               </div>
@@ -82,7 +81,6 @@
   </body>
 
   <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-
   <script>
     const button = document.querySelector('.login-btn');
     mdc.ripple.MDCRipple.attachTo(button);
@@ -90,6 +88,29 @@
     for (const textField of textFields) {
       mdc.textField.MDCTextField.attachTo(textField);
     }
+    const create = async function( e ) {
+      e.preventDefault();
+      const userData = {
+        username: document.getElementById( 'username' ).value,
+        password: document.getElementById( 'password' ).value,
+        orders: []
+      };
+      try {
+        const resp = await fetch( '/createAccount', {
+          method:'POST',
+          body: JSON.stringify(userData),
+          headers: { 'Content-Type': 'application/json' },
+        });
+        const data = await resp.json();
+        if (data.status === true) {
+          document.getElementById('account-creation-success').style.display = "block";
+          viewLoginForm();
+        } else {
+          document.getElementById('duplicate-account-error').style.display = "block";
+        }
+      } catch {}
+      return false;
+    };
     const login = async function( e ) {
       e.preventDefault();
       const userData = {
@@ -105,12 +126,35 @@
         });
         const data = await resp.json();
         if (data.status === true) {
-          window.location="/order.html";
+          window.location="/orderPlatform.html";
         }
       } catch {
         document.getElementById('username-error').style.display = "block";
       }
       return false;
+    };
+    const viewCreateForm = function() {
+      resetLoginForm();
+      document.getElementById('form-title').innerText = "sign-up";
+      document.getElementById('help-text').innerText = "Have an account?";
+      document.getElementById('new-account-btn').style.display = "none";
+      document.getElementById('account-exists-btn').style.display = "inline-flex";
+      document.getElementById('create-account-btn').style.display = "inline-flex";
+      document.getElementById('login-btn').style.display = "none";
+      document.getElementById('username-error').style.display = "none";
+      document.getElementById('account-creation-success').style.display = "none";
+      document.getElementById('duplicate-account-error').style.display = "none";
+    };
+    const viewLoginForm = function() {
+      document.getElementById('form-title').innerText = "login";
+      document.getElementById('help-text').innerText = "New here?";
+      document.getElementById('account-exists-btn').style.display = "none";
+      document.getElementById('new-account-btn').style.display = "inline-flex";
+      document.getElementById('create-account-btn').style.display = "none";
+      document.getElementById('login-btn').style.display = "inline-flex";
+      document.getElementById('username-error').style.display = "none";
+      document.getElementById('account-creation-success').style.display = "none";
+      document.getElementById('duplicate-account-error').style.display = "none";
     };
     const resetLoginForm = () => {
       document.getElementById( 'username' ).value = '';
@@ -120,6 +164,12 @@
       resetLoginForm();
       const loginButton = document.getElementById('login-btn');
       loginButton.onclick = login;
+      const newAccountButton = document.getElementById('new-account-btn');
+      newAccountButton.onclick = viewCreateForm;
+      const createAccountButton = document.getElementById('create-account-btn');
+      createAccountButton.onclick = create;
+      const returnToLogin = document.getElementById('account-exists-btn');
+      returnToLogin.onclick = viewLoginForm;
     };
   </script>
 </html>
