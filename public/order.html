@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Yume Wo Katare</title>
+    <title>Bon Me</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Oregano:400,400i|Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two|Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
   </head>
+  
   <body class="mdc-typography mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7-desktop mdc-layout-grid__cell--span-12-tablet mdc-layout-grid__cell--span-12-phone">
@@ -50,9 +51,9 @@
       </div>
     </div>
     <header class="hero" style="display: flex; justify-content: center;">
-      <img src="images/ramen3.jpg" style="width: 100%;"/>
-      <h1>Yume Wo Katare</h1>
-      <p>where anyone can create and achieve their dreams</p>
+      <img src="https://cdn.glitch.com/43008e21-b00d-4a43-831e-9d38ee279bc0%2Frice_bowl_header.jpg?v=1568002875243" id="rice-bowl" alt="4 bowls of different toppings">
+      <h1>Bon Me</h1>
+      <h2>Create your own rice bowl!</h2>
       <div class="bar"></div>
     </header>
     <main class="mdc-layout-grid__inner">
@@ -61,13 +62,14 @@
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop"></div>
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-12-phone mdc-layout-grid__cell--span-12-tablet" style="text-align: center;">
             <div style="display: flex; flex-direction: column; align-items: center;">
-                <!--    ORDER FORM    -->
+                
+              <!--    ORDER FORM    -->
                 <div id="order-form">
                   <h3 class="mdc-typography--headline3">order your ramen</h3>
                   <form action="">
                     <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
                       <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
-                        <input type='text' id='name' class="mdc-text-field__input" required>
+                        <input type="text" id="name" class="mdc-text-field__input" required>
                         <div class="mdc-notched-outline">
                           <div class="mdc-notched-outline__leading"></div>
                           <div class="mdc-notched-outline__notch">
@@ -79,7 +81,7 @@
                     </div>
                     <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
                       <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--outlined" style="width: 100%;">
-                        <textarea id='dream' class="mdc-text-field__input" required></textarea>
+                        <textarea id="dream" class="mdc-text-field__input" required></textarea>
                         <div class="mdc-notched-outline">
                           <div class="mdc-notched-outline__leading"></div>
                           <div class="mdc-notched-outline__notch">
@@ -151,7 +153,7 @@
                   <form action="">
                     <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
                       <div class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
-                        <input type='text' id='updateName' class="mdc-text-field__input" required>
+                        <input type="text" id="updateName" class="mdc-text-field__input" required>
                         <div class="mdc-notched-outline">
                           <div class="mdc-notched-outline__leading"></div>
                           <div class="mdc-notched-outline__notch">
@@ -163,7 +165,7 @@
                     </div>
                     <div class="mdc-form-field" style="margin-bottom: 20px; width: 100%;">
                       <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--outlined" style="width: 100%;">
-                        <textarea id='updateDream' class="mdc-text-field__input" required></textarea>
+                        <textarea id="updateDream" class="mdc-text-field__input" required></textarea>
                         <div class="mdc-notched-outline">
                           <div class="mdc-notched-outline__leading"></div>
                           <div class="mdc-notched-outline__notch">
