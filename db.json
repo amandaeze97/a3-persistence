@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "username": "Amanda",
+      "password": "1234",
+      "orders": [
+        {
+          "name": "Amanda",
+          "ordername": "Pacific Centre",
+          "typeOfGrain": 0,
+          "typeOfProtein": 1,
+          "price": 10
+        },
+        {
+          "name": "Amanda",
+          "ordername": "Crispy Bacon",
+          "typeOfGrain": 1,
+          "typeOfProtein": 1,
+          "price": 11
+        }
+      ]
+    },
+    {
+      "username": "Christina",
+      "password": "12345",
+      "orders": [
+        {
+          "name": "Christina",
+          "ordername": "Treasure Island",
+          "typeOfGrain": 0,
+          "typeOfProtein": 2,
+          "price": 11
+        }
+      ]
+    }
+  ]
+}

@@ -174,7 +174,7 @@ app.listen( port );
 
 const appdata = [
   { 'fstname': 'Amanda', 'lstname': 'Ezeobiejesi', 'ordername': 'Pacific Centre', 'typeOfGrain': 0, 'typeOfProtein': 1, 'price': 10},
-  { 'fstname': 'Chirstina', 'lstname': 'Zymaris', 'ordername': 'Crispy Bacon', 'typeOfGrain': 1, 'typeOfProtein': 1, 'price': 11},
+  { 'fstname': 'Christina', 'lstname': 'Zymaris', 'ordername': 'Crispy Bacon', 'typeOfGrain': 1, 'typeOfProtein': 1, 'price': 11},
   { 'fstname': 'Beza', 'lstname': 'Ayalew', 'ordername': 'Treasure Island', 'typeOfGrain': 0, 'typeOfProtein': 2, 'price': 11},
 
 ];
@@ -299,4 +299,4 @@ const sendFile = function( response, filename ) {
    })
 };
 
-server.listen( process.env.PORT || port );**
+server.listen( process.env.PORT || port );**/
